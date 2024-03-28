@@ -69,7 +69,7 @@ about the data.**
 2. The key hypothesis is that if the learning algorithm is allowed to choose the data from which it learns—to be “curious,” if you will—it will perform better with less training.
 3. Active learning is a special case of semi-supervised learning.
 
-# ML Data Assumptions
+# ML Data Assumptions (same dist. & iid)
 
 1. Training and test data are from the same probability distribution.
 2. Training and test data are iid (independent and identically distributed)
