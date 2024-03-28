@@ -1,4 +1,4 @@
-# W1_What-Do-Machines-Learn
+# Week1 : What-Do-Machines-Learn?
 
 # Types of Learning Part 1
 
