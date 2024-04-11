@@ -239,3 +239,6 @@ Estimate the unknown function 𝑓 as 𝑓
 <img width="721" alt="Screenshot 2024-04-11 at 2 58 20 PM" src="https://github.com/ColleenJung/Sp24_Machine-Learning-Notebooks/assets/119357849/9590815f-e447-41c4-b40c-f1882af1c023">
 
 # Early Stopping
+- Why would a data scientist want to use early stopping in gradient descent?
+  
+Early stopping refers to halting the learning process before all epochs are used. This is often used to prevent overfitting, and is usually applied when validation loss starts to increase, and the model starts to lose the ability to generalize
