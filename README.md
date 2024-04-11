@@ -150,3 +150,92 @@ Estimate the unknown function 𝑓 as 𝑓
 1. computational complexity of inverting a matrix that increases with size of training set
 2. difficult to do online learning with new data arriving regularly (need to recalculate estimates), i.e. no iterative parameter updates
 
+# Week2: Gradient Descent and Shrinkage
+
+# Normalization vs Standardization
+
+- **Normalization** in machine learning is the process of translating data into the range [0, 1] 
+<img width="558" alt="Screenshot 2024-04-11 at 2 27 13 PM" src="https://github.com/ColleenJung/Sp24_Machine-Learning-Notebooks/assets/119357849/5994f99f-0249-45b1-a239-c4b97ee78253">
+
+# Historical Data Challenges - Missing Data(find patterns)
+
+- Missing Data
+• To Impute or Not to Impute – depends on the dataset size and missing %
+• Imputations
+• Missing Completely At Random (MCAR) – no pattern in missing data
+• Missing At Random (MAR) – pattern between missing variable and another variable
+• Missing Not At Random (MNAR) – pattern in probability of missing based on data value
+
+# Historical Data Challenges – Binning
+
+1. Convert a continuous feature into a categorical feature.
+2. Define a series of ranges called bins.
+
+# Feature Engineering
+
+1. Specific to business use-case
+2. Presumably redundant variables can help with classification
+3. Perfectly correlated variables are redundant
+4. Imperfectly correlated variables can be useful and complementary
+5. Variable that is not useful for modeling by itself can be useful in combination with another variable
+6. Categorical variables (non-ordinal) – **one-hot encoding**
+7. Categorical variables (ordinal) – **label encoding**
+
+# Dimension Reduction
+
+1. Principal Components Analysis (PCA) – project p variables onto M dimensions to construct the first M principal components.
+2. Principal Components Regression (PCR) – use the M principal components as predictors in a linear regression model fit using OLS.
+3. Works well when first M principal components capture most of the variation in the predictors as well as the relation with the dependent variable.
+4. NOTE – **not a feature selection since each principal component is a linear combination of all p original predictors – consider ridge regression as a continuous version of PCR.**
+5. Partial Least Squares (PLS) – finds directions that help explain both the response and the predictors
+6. T-distributed Stochastic Neighbor Embedding (t-SNE) – reduces dimensionality keeping similar points close and dissimilar points apart using non-linear approach with probability distributions
+
+# PCA Interpretation (PCAs captures the most important info(variance))
+
+<img width="596" alt="Screenshot 2024-04-11 at 2 38 48 PM" src="https://github.com/ColleenJung/Sp24_Machine-Learning-Notebooks/assets/119357849/0afe77f7-362b-4af0-99ec-61318f5cb661">
+
+1. The first principal component loading vector has a very special property: it defines the line in p-dimensional space that is closest to the n observations (using average squared Euclidean distance as a measure of closeness).
+2. The notion of principal components as the dimensions that are closest to the n observations extends beyond just the first principal component.
+3. For instance, the first two principal components of a data set span the plane that is closest to the n observations, in terms of average squared Euclidean distance.
+
+# PCA to t-SNE
+
+1. PCA is a linear algorithm that is not be able to interpret complex polynomial relationship between features.
+2. t-SNE is based on probability distributions with random walk on neighborhood graphs to find the structure within the data. https://distill.pub/2016/misread-tsne/
+
+# Gradient Descent and Learning Rate Summary
+**Cost function**
+1. the mean squared error in the case of linear regression, evaluates how close is the predicted value to the actual value.
+**Gradient descent** 
+1. used to get to the **minimum value of the cost function.**
+2. Intuitively, **gradient descent finds the slope of the cost function** at every step and travels down the valley to reach the lowest point (minimum of the cost function).
+
+<img width="715" alt="Screenshot 2024-04-11 at 2 52 48 PM" src="https://github.com/ColleenJung/Sp24_Machine-Learning-Notebooks/assets/119357849/6caa55a4-6e95-4366-80c3-a2b6332443d9">
+
+# Gradient Descent Variants
+
+<img width="320" alt="Screenshot 2024-04-11 at 2 55 26 PM" src="https://github.com/ColleenJung/Sp24_Machine-Learning-Notebooks/assets/119357849/791505f4-cdb9-4fbc-b1ab-672449c71f1e">
+
+1. Batch – compute gradient in one-shot with all training data
+2. Stochastic – compute gradient using one random training data instance at a time
+3. Mini-batch – compute gradient using small random sets of training data instances called mini-batches
+4. Stochastic + Momentum – use weighted moving average of gradients 
+
+
+# Gradient Descent Optimizations
+1. Momentum – use exponentially weighted average of past gradient to update for future gradient
+
+# Linear Model Selection & Regularization(reduce overfitting)
+<img width="401" alt="Screenshot 2024-04-11 at 2 58 53 PM" src="https://github.com/ColleenJung/Sp24_Machine-Learning-Notebooks/assets/119357849/2d20279e-9338-452f-bf18-233f13c9b27d">
+
+- Motivation
+• Prediction Accuracy – if linear relation between dependent & independent then low bias; if n >> p then also low variance.
+• Model Interpretability – irrelevant variables complicate models.
+- Methodologies
+1. Subset Selection – identify a subset of p predictors.
+2. Shrinkage aka Regularization – a modification to a learning algorithm that is intended to reduce its generalization error but not its training error.
+3. Dimension Reduction – project p predictors into a M-dim space where M << p.
+
+<img width="721" alt="Screenshot 2024-04-11 at 2 58 20 PM" src="https://github.com/ColleenJung/Sp24_Machine-Learning-Notebooks/assets/119357849/9590815f-e447-41c4-b40c-f1882af1c023">
+
+# Early Stopping
